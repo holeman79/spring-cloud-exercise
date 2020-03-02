@@ -1,0 +1,43 @@
+spring:
+  application:
+    name: display
+
+server:
+  port: 8501
+
+feign:
+  hystrix:
+    enabled: true
+
+hystrix:
+  command:
+    default:              # command key. use default for global setting.
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
+      circuitBreaker:
+        requestVolumeThreshold: 4
+        errorThresholdPercentage: 50
+    "FeignProductRemoteService#getProduct(String)":
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
+      circuitBreaker:
+        requestVolumeThreshold: 4
+        errorThresholdPercentage: 50
+
+product:
+  ribbon:
+    #listOfServers: localhost:7777, localhost:8500
+    MaxAutoRetries: 0
+    MaxAutoRetriesNextServer: 1
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
