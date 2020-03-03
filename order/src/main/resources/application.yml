@@ -1,0 +1,12 @@
+server:
+  port: 8502
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      acks: 1
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    topic:
+      orderCreated: ORDER_CREATED
