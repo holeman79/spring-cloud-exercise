@@ -1,6 +1,18 @@
 spring:
   application:
     name: product
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: product-group
+      auto-offset-reset: latest
+      enable-auto-commit: false
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    listener:
+      ack-mode: manual_immediate
+    topic:
+      orderCreated: ORDER_CREATED
 
 server:
   port: 8500

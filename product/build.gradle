@@ -16,6 +16,7 @@ ext['springCloudVersion'] = 'Finchley.SR2'
 
 dependencies {
 	compile 'org.springframework.boot:spring-boot-starter-web'
+	compile 'org.springframework.kafka:spring-kafka'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
